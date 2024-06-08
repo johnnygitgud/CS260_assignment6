@@ -133,25 +133,29 @@ public:
 
 int main() {
     FileBST fileTree;
-
+    for(int fileNumber = 0; fileNumber < 100; fileNumber++)
+    {
+        std::string fileName = "file" + std::to_string(fileNumber) + ".txt";
+        fileTree.addFile(fileName, "Hello, Instructor Joseph this is " + fileName + "!");
+    }
     // Add files with content
-    fileTree.addFile("file1.txt", "Hello, this is file1.txt!");
-    fileTree.addFile("file2.txt", "This file contains some data.");
+    // fileTree.addFile("file1.txt", "Hello, this is file1.txt!");
+    // fileTree.addFile("file2.txt", "This file contains some data.");
 
-    // Traverse and display files
-    fileTree.traverseFiles();
+    // // Traverse and display files
+    // fileTree.traverseFiles();
 
-    // Search for a file
-    fileTree.searchFile("file2.txt");
+    // // Search for a file
+    // fileTree.searchFile("file2.txt");
 
-    // Remove a file
-    fileTree.removeFile("file2.txt");
+    // // Remove a file
+    // fileTree.removeFile("file2.txt");
 
-    // Traverse again after removal
-    fileTree.traverseFiles();
+    // // Traverse again after removal
+    // fileTree.traverseFiles();
 
-    // Search for the removed file
-    fileTree.searchFile("file2.txt");
+    // // Search for the removed file 
+    // fileTree.searchFile("file2.txt");
 
     return 0;
 }
