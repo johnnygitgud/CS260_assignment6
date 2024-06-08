@@ -30,7 +30,7 @@ private:
         return node;
     }
 
-    // Helper function to find the minimum value node
+    // Helper function to find the minimum value node. Will be used by remove method
     Node* findMin(Node* node) {
         while (node->left != nullptr) {
             node = node->left;
@@ -64,15 +64,24 @@ private:
         return node;
     }
 
-    // Helper function to perform in-order traversal
-    void inOrderTraversal(Node* node) {
-        if (node != nullptr) {
-            inOrderTraversal(node->left);
-            std::cout << node->fileName << " ";
-            inOrderTraversal(node->right);
-        }
+    // Helper function to perform in-order traversal and print filenames in a one line list.
+    // void inOrderTraversal(Node* node) {
+    //     if (node != nullptr) {
+    //         inOrderTraversal(node->left);
+    //         std::cout << node->fileName << " ";
+    //         inOrderTraversal(node->right);
+    //     }
+    // }
+// Helper function to perform in-order traversal and simulate visiting left child, node, and right child.
+void inOrderTraversal(Node* node) {
+    if (node != nullptr) {
+        std::cout << "Visiting left child of " << node->fileName << std::endl;
+        inOrderTraversal(node->left);
+        std::cout << "Visiting node " << node->fileName << std::endl;
+        std::cout << "Visiting right child of " << node->fileName << std::endl;
+        inOrderTraversal(node->right);
     }
-
+}
 public:
     FileBST() : root(nullptr) {
         // Get the path to the user's Desktop directory
@@ -125,7 +134,7 @@ public:
     }
 
     void traverseFiles() {
-        std::cout << "Files in BST (in-order): ";
+        std::cout << "Files in BST (in-order Traversal): ";
         inOrderTraversal(root);
         std::cout << std::endl;
     }
@@ -133,29 +142,43 @@ public:
 
 int main() {
     FileBST fileTree;
-    for(int fileNumber = 0; fileNumber < 100; fileNumber++)
+    for(int fileNumber = 0; fileNumber < 10; fileNumber++)
     {
         std::string fileName = "file" + std::to_string(fileNumber) + ".txt";
         fileTree.addFile(fileName, "Hello, Instructor Joseph this is " + fileName + "!");
     }
-    // Add files with content
+    // Add files with a string to Desktop one at a time.
     // fileTree.addFile("file1.txt", "Hello, this is file1.txt!");
     // fileTree.addFile("file2.txt", "This file contains some data.");
 
-    // // Traverse and display files
-    // fileTree.traverseFiles();
+    // Traverse and display files
+    fileTree.traverseFiles();
 
-    // // Search for a file
-    // fileTree.searchFile("file2.txt");
+    // // Search for a single file
+    fileTree.searchFile("file2.txt");
 
-    // // Remove a file
-    // fileTree.removeFile("file2.txt");
+    //Loop through and search for all files
+    for(int fileNumber = 0; fileNumber < 10; fileNumber++)
+    {
+        std::string fileName = "file" + std::to_string(fileNumber) + ".txt";
+        fileTree.searchFile(fileName);
+    }
 
-    // // Traverse again after removal
-    // fileTree.traverseFiles();
+    // Remove one file at a time
+    fileTree.removeFile("file2.txt");
 
-    // // Search for the removed file 
-    // fileTree.searchFile("file2.txt");
+    // Traverse again after removal
+    fileTree.traverseFiles();
+
+    // Search for the removed file 
+    fileTree.searchFile("file2.txt");
+
+    //Loop to remove all files...Uncomment when you want to see all files removed at once. Otherwise all files will not appear in the Desktop after runtime.
+    // for(int fileNumber = 0; fileNumber < 10; fileNumber++)
+    // {
+    //     std::string fileName = "file" + std::to_string(fileNumber) + ".txt";
+    //     fileTree.removeFile(fileName);
+    // }
 
     return 0;
 }
