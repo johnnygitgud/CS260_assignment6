@@ -1,4 +1,5 @@
 # CS260_assignment6
+ My intention with this project was to do do something meaningful with the Binary Search Tree rather than just inserting numbers into nodes. Instead files are the nodes and the text is the value of the nodes. 
 This is a screenshot of my desktop when a files are created. Check out the custom messages by running bstOWV.cpp
 ![alt text](image-1.png)
 
