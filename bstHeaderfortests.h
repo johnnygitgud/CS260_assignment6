@@ -4,7 +4,7 @@
 
 #include <string>
 #include <filesystem>
-
+//Node declaration
 class Node {
 public:
     std::string fileName;
@@ -13,7 +13,7 @@ public:
 
     Node(std::string name);
 };
-
+//BST declaration
 class FileBST {
 private:
     Node* root;
