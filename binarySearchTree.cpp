@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
-
+#include "bstHeaderfortests.h"
 class Node {
 public:
     std::string fileName;
@@ -72,6 +72,7 @@ private:
     //         inOrderTraversal(node->right);
     //     }
     // }
+    
 // Helper function to perform in-order traversal and simulate visiting left child, node, and right child.
 void inOrderTraversal(Node* node) {
     if (node != nullptr) {
@@ -138,6 +139,10 @@ public:
         inOrderTraversal(root);
         std::cout << std::endl;
     }
+    //Make the desktopPath accessible for testing
+    std::filesystem::path getDesktopPath() {
+    return desktopPath;
+}
 };
 
 int main() {
